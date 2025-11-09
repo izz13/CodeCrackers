@@ -7,6 +7,9 @@
     <ui:VisualElement name="Bottom" style="flex-grow: 1; position: absolute; flex-direction: row; align-self: flex-end; width: 80%; height: 20%; top: 80%; left: 0%; background-color: rgb(255, 247, 247);">
         <ui:VisualElement name="ActiveSelectionStats" style="flex-grow: 1; position: absolute; left: 0%; background-color: rgb(255, 0, 0); width: 60%; height: 100%;">
             <ui:Label name="Unit_Title" style="font-size: 10%;" />
+            <ui:Label name="Health" />
+            <ui:Label name="Hunger" />
+            <ui:Label name="Level" />
         </ui:VisualElement>
         <ui:VisualElement name="AllUnitsData" style="flex-grow: 1; position: absolute; left: 60%; width: 40%; height: 100%; background-color: rgb(38, 0, 255);" />
     </ui:VisualElement>
