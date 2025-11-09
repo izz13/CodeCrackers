@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
 using Mono.Cecil.Cil;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -66,7 +67,11 @@ public class GameManager : MonoBehaviour
         if (selectedGameObjects.Contains(moundManager.gameObject))
         {
             //Debug.Log("Mound in list");
-            gameUI.rootVisualElement.Q<Label>("Unit_Title").text = "Mound";
+            //1. Make another label in the ui document for the Unit Stats
+            //2. Set the the text of the label you created with the stats of the queen ant
+            //3. to get the stats use moundMananger, for example if I wanted the queen health
+            //example : moundManager.queenAnt.health;
+            gameUI.rootVisualElement.Q<Label>("Unit_Title").text = moundManager.queenAnt.name;
         }
         else
         {
