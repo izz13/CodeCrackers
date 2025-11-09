@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 using UnityEditor.UIElements;
 using Mono.Cecil.Cil;
 using System;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -60,12 +61,13 @@ public class GameManager : MonoBehaviour
         }
         selectionBoxController.SelectionBoxUpdate(rightClick);
         selectedGameObjects = selectionBoxController.selectedGameObjects;
+        findAnts();
     }
 
     void gameUI_Update()
     {
 
-        if (selectedGameObjects.Contains(moundManager.gameObject))
+        if (selectedGameObjects.Contains(moundManager.gameObject) && antManager.ants.Count == 0)
         {
             //Debug.Log("Mound in list");
             //1. Make another label in the ui document for the Unit Stats
@@ -77,6 +79,12 @@ public class GameManager : MonoBehaviour
             gameUI.rootVisualElement.Q<Label>("Hunger").text = "Hunger: " + moundManager.queenAnt.hunger.ToString();
             gameUI.rootVisualElement.Q<Label>("Level").text = "Level: " + moundManager.queenAnt.level.ToString();
 
+        }
+        else if (antManager.ants.Count > 0)
+        {
+            AntController firstAnt = antManager.ants[0];
+            //1.Do the same thing you did for queen
+            //2.But for firstAnt instead
         }
         else
         {
@@ -92,6 +100,32 @@ public class GameManager : MonoBehaviour
         //     gameUI.rootVisualElement.Q<Label>("Hunger").text = "Hunger: " + moundManager.queenAnt.hunger.ToString();
         //     gameUI.rootVisualElement.Q<Label>("Level").text = "Level: " + moundManager.queenAnt.level.ToString();
         // }
+    }
+    
+    void findAnts()
+    {
+        List<AntController> selectedAnts = new List<AntController>();
+        foreach (GameObject gameObject in selectedGameObjects)
+        {
+            AntController selectedAnt = gameObject.GetComponent<AntController>();
+            if (selectedAnt != null)
+            {
+                selectedAnts.Add(selectedAnt);
+            }
+        }
+
+        foreach (AntController ant in antManager.ants)
+        {
+            if (!selectedAnts.Contains(ant))
+            {
+                antManager.ants.Remove(ant);
+            }
+        }
+        foreach (AntController ant in selectedAnts)
+        {
+            antManager.addAnt(ant);
+        }
+
     }
         
 

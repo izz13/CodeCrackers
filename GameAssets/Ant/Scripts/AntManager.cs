@@ -87,9 +87,27 @@ public class AntManager : MonoBehaviour
     }
 
 
-    void addAnt(List<AntController> ants, AntController ant)
+    // void addAnt(List<AntController> ants, AntController ant)
+    // {
+    //     ants.Add(ant);
+    // }
+
+    public void addAnt(List<AntController> ants, AntController ant)
     {
-        ants.Add(ant);
+        if (!ants.Contains(ant))
+        {
+            ants.Add(ant);
+        }
+        
+    }
+
+    public void addAnt(AntController ant)
+    {
+        if (!ants.Contains(ant))
+        {
+            ants.Add(ant);
+        }
+        
     }
 
     void removeAnt(List<AntController> ants, AntController ant)
