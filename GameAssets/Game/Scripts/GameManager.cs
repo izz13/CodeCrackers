@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
 
     void gameUI_Update()
     {
+
         if (selectedGameObjects.Contains(moundManager.gameObject))
         {
             //Debug.Log("Mound in list");
@@ -72,11 +73,25 @@ public class GameManager : MonoBehaviour
             //3. to get the stats use moundMananger, for example if I wanted the queen health
             //example : moundManager.queenAnt.health;
             gameUI.rootVisualElement.Q<Label>("Unit_Title").text = moundManager.queenAnt.name;
+            gameUI.rootVisualElement.Q<Label>("Health").text = "Health: " + moundManager.queenAnt.health.ToString();
+            gameUI.rootVisualElement.Q<Label>("Hunger").text = "Hunger: " + moundManager.queenAnt.hunger.ToString();
+            gameUI.rootVisualElement.Q<Label>("Level").text = "Level: " + moundManager.queenAnt.level.ToString();
+
         }
         else
         {
             gameUI.rootVisualElement.Q<Label>("Unit_Title").text = "";
+            gameUI.rootVisualElement.Q<Label>("Health").text = "";
+            gameUI.rootVisualElement.Q<Label>("Hunger").text = "";
+            gameUI.rootVisualElement.Q<Label>("Level").text = "";
         }
+        // if (!selectedGameObjects.Contains(moundManager.gameObject) && selectedGameObjects.Contains(antManager.gameObject))
+        // {
+        //     gameUI.rootVisualElement.Q<Label>("Unit_Title").text = moundManager.queenAnt.name;
+        //     gameUI.rootVisualElement.Q<Label>("Health").text = "Health: " + moundManager.queenAnt.health.ToString();
+        //     gameUI.rootVisualElement.Q<Label>("Hunger").text = "Hunger: " + moundManager.queenAnt.hunger.ToString();
+        //     gameUI.rootVisualElement.Q<Label>("Level").text = "Level: " + moundManager.queenAnt.level.ToString();
+        // }
     }
         
 
