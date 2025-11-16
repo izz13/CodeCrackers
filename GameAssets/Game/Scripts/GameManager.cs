@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
 
     void gameUI_Update()
     {
+        
 
         if (selectedGameObjects.Contains(moundManager.gameObject) && antManager.ants.Count == 0)
         {
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
             gameUI.rootVisualElement.Q<Label>("Label0").text = "Health: " + moundManager.queenAnt.health.ToString();
             gameUI.rootVisualElement.Q<Label>("Label1").text = "Hunger: " + moundManager.queenAnt.hunger.ToString();
             gameUI.rootVisualElement.Q<Label>("Label2").text = "Level: " + moundManager.queenAnt.level.ToString();
+            gameUI.rootVisualElement.Q<Label>("Label3").text = "";
 
         }
         else if (antManager.ants.Count > 0)
@@ -86,9 +88,10 @@ public class GameManager : MonoBehaviour
             //1.Do the same thing you did for queen
             //2.But for firstAnt instead
             gameUI.rootVisualElement.Q<Label>("Unit_Title").text = firstAnt.name;
-            gameUI.rootVisualElement.Q<Label>("Label0").text = "";
+            gameUI.rootVisualElement.Q<Label>("Label0").text = antManager.ants.Count.ToString();
             gameUI.rootVisualElement.Q<Label>("Label1").text = "Health: "+firstAnt.health.ToString();
-            gameUI.rootVisualElement.Q<Label>("Label2").text = "Level: " +firstAnt.level.ToString();
+            gameUI.rootVisualElement.Q<Label>("Label2").text = "Level: " + firstAnt.level.ToString();
+            gameUI.rootVisualElement.Q<Label>("Label3").text = "";
         }
         else
         {
@@ -96,6 +99,7 @@ public class GameManager : MonoBehaviour
             gameUI.rootVisualElement.Q<Label>("Label0").text = "";
             gameUI.rootVisualElement.Q<Label>("Label1").text = "";
             gameUI.rootVisualElement.Q<Label>("Label2").text = "";
+            gameUI.rootVisualElement.Q<Label>("Label3").text = "";
         }
         // if (!selectedGameObjects.Contains(moundManager.gameObject) && selectedGameObjects.Contains(antManager.gameObject))
         // {

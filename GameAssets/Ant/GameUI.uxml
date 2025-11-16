@@ -10,6 +10,7 @@
             <ui:Label name="Label0" />
             <ui:Label name="Label1" />
             <ui:Label name="Label2" />
+            <ui:Label text="&#10;" name="Label3" />
         </ui:VisualElement>
         <ui:VisualElement name="AllUnitsData" style="flex-grow: 1; position: absolute; left: 60%; width: 40%; height: 100%; background-color: rgb(38, 0, 255);" />
     </ui:VisualElement>
