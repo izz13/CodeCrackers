@@ -46,6 +46,9 @@ public class AntController : MonoBehaviour
     float followStopDistance = 2.5f;
 
     public string name = "Ant";
+    public int health = 100;
+    public int level = 1;
+
 
 
 

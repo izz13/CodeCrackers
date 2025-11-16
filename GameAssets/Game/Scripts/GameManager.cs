@@ -86,6 +86,9 @@ public class GameManager : MonoBehaviour
             //1.Do the same thing you did for queen
             //2.But for firstAnt instead
             gameUI.rootVisualElement.Q<Label>("Unit_Title").text = firstAnt.name;
+            gameUI.rootVisualElement.Q<Label>("Hunger").text = "";
+            gameUI.rootVisualElement.Q<Label>("Health").text = "Health: "+firstAnt.health.ToString();
+            gameUI.rootVisualElement.Q<Label>("Level").text = "Level: " +firstAnt.level.ToString();
         }
         else
         {
@@ -106,6 +109,7 @@ public class GameManager : MonoBehaviour
     void findAnts()
     {
         List<AntController> selectedAnts = new List<AntController>();
+        List<AntController> removedAnts = new List<AntController>();
         foreach (GameObject gameObject in selectedGameObjects)
         {
             AntController selectedAnt = gameObject.GetComponent<AntController>();
@@ -119,12 +123,16 @@ public class GameManager : MonoBehaviour
         {
             if (!selectedAnts.Contains(ant))
             {
-                antManager.ants.Remove(ant);
+                removedAnts.Add(ant);
             }
         }
         foreach (AntController ant in selectedAnts)
         {
             antManager.addAnt(ant);
+        }
+        foreach (AntController ant in removedAnts)
+        {   
+            antManager.ants.Remove(ant);
         }
 
     }
