@@ -45,6 +45,8 @@ public class AntController : MonoBehaviour
 
     float followStopDistance = 2.5f;
 
+    public string name = "Ant";
+
 
 
     private void Awake()

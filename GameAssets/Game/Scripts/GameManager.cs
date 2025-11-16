@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
             AntController firstAnt = antManager.ants[0];
             //1.Do the same thing you did for queen
             //2.But for firstAnt instead
+            gameUI.rootVisualElement.Q<Label>("Unit_Title").text = firstAnt.name;
         }
         else
         {
