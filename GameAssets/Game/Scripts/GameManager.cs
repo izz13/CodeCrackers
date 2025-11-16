@@ -46,6 +46,12 @@ public class GameManager : MonoBehaviour
         {
             selectUpdate();
             gameUI_Update();
+            if (antManager.ants.Count > 0)
+            {
+                //Check if the mouse has been clicked
+                //Call the move update function from ant manager 
+                //ex. antManager.moveUpdate(mousePos)
+            }
         }
     }
 

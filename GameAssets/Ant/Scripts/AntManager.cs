@@ -157,28 +157,20 @@ public class AntManager : MonoBehaviour
        
     }
 
-    void moveUpdate()
+    public void moveUpdate(Vector2 pos)
     {
-        if (ants.Count == 0)
+        Vector3 point = getFollowPoint(pos);
+        foreach (AntController ant in ants)
         {
-            Debug.Log("Please select some Ants");
-            currentState = AntManagerStates.Select;
-        }
-        if (cameraControlsInput.MouseClicked && !MouseOverUI())
-        {
-            Vector3 point = getFollowPoint(cameraControlsInput.MousePos);
-            foreach (AntController ant in ants)
-            {
-                ant.setFollowPoint(point);
-            }
+            ant.setFollowPoint(point);
         }
     }
 
 
-    Vector3 getFollowPoint(Vector2 mousePos)
+    Vector3 getFollowPoint(Vector2 movePos)
     {
         RaycastHit hit;
-        Ray ray = mainCamera.ScreenPointToRay(mousePos);
+        Ray ray = mainCamera.ScreenPointToRay(movePos);
         if (Physics.Raycast(ray, out hit, 10000, antLayerMask))
         {
 
