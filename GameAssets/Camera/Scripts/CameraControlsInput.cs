@@ -94,4 +94,9 @@ public class CameraControlsInput : MonoBehaviour, PlayerControls.ICameraMotionMa
             RightMouseReleased = true;
         }
     }
+
+    public void OnLeftMouseClicked(InputAction.CallbackContext context)
+    {
+        throw new System.NotImplementedException();
+    }
 }
