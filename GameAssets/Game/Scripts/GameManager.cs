@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> selectedGameObjects;
 
     bool rightClick;
+    bool leftClick;
 
     void Start()
     {
@@ -48,6 +49,14 @@ public class GameManager : MonoBehaviour
             gameUI_Update();
             if (antManager.ants.Count > 0)
             {
+                if (input.LeftMouseClicked)
+                {
+                    leftClick = true;
+                }
+                if (input.RightMouseReleased)
+                {
+                    leftClick = false;
+                }
                 //Check if the mouse has been clicked
                 //Call the move update function from ant manager 
                 //ex. antManager.moveUpdate(mousePos)
