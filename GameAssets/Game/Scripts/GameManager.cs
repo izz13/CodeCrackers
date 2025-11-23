@@ -49,11 +49,11 @@ public class GameManager : MonoBehaviour
             gameUI_Update();
             if (antManager.ants.Count > 0)
             {
-                if (input.LeftMouseClicked)
+                if (input.MouseClicked)
                 {
                     leftClick = true;
                 }
-                if (input.RightMouseReleased)
+                if (input.MouseReleased)
                 {
                     leftClick = false;
                 }
