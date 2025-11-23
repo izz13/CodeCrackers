@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     UIDocument gameUI;
 
+    [SerializeField]
+    Camera mainCamera;
+
 
     public GameState currentState;
 
@@ -33,9 +36,12 @@ public class GameManager : MonoBehaviour
     bool rightClick;
     bool leftClick;
 
+    public LayerMask groundMask;
+
     void Start()
     {
         currentState = GameState.Start;
+
         //selectedGameObjects = new List<GameObject>();
     }
 
@@ -52,6 +58,11 @@ public class GameManager : MonoBehaviour
                 if (input.MouseClicked)
                 {
                     leftClick = true;
+                    Vector3 movePoint = getMovePoint();
+                    if (movePoint != Vector3.zero)
+                    {
+                        antManager.moveUpdate(movePoint);
+                    }
                 }
                 if (input.MouseReleased)
                 {
@@ -154,6 +165,51 @@ public class GameManager : MonoBehaviour
             antManager.ants.Remove(ant);
         }
 
+    }
+
+    void OnDrawGizmos()
+    {
+        RaycastHit hit;
+        Ray ray = mainCamera.ScreenPointToRay(input.MousePos);
+        Gizmos.color = Color.aliceBlue;
+        if (Physics.Raycast(ray, out hit, 10000, groundMask) && !MouseOverUI())
+        {
+
+            Vector3 movePoint = new Vector3(hit.point.x, 0f, hit.point.z);
+            Gizmos.DrawCube(movePoint,new Vector3(.2f,.2f,.2f));
+        }
+    }
+
+    Vector3 getMovePoint()
+    {
+        RaycastHit hit;
+        Ray ray = mainCamera.ScreenPointToRay(input.MousePos);
+        if (Physics.Raycast(ray, out hit, 10000, groundMask) && !MouseOverUI())
+        {
+
+            Vector3 movePoint = new Vector3(hit.point.x, 0f, hit.point.z);
+            return movePoint;
+        }
+        return Vector3.zero;
+    }
+
+    bool MouseOverUI()
+    {
+        Vector2 mousePostion = input.MousePos;
+        mousePostion.y = Screen.height - mousePostion.y;
+        IPanel panel = gameUI.rootVisualElement.panel;
+        Vector2 panelMousePos = RuntimePanelUtils.ScreenToPanel(panel, mousePostion);
+        //Debug.Log(panel.Pick(panelMousePos));
+        VisualElement mouseOverElement = panel.Pick(panelMousePos);
+        if (mouseOverElement != null)
+        {
+            Debug.Log(mouseOverElement);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
         
 

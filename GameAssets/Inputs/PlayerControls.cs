@@ -135,15 +135,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""LeftMouseClicked"",
-                    ""type"": ""Button"",
-                    ""id"": ""c1d283fb-1921-4315-820a-546ee25e10f7"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -245,17 +236,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""RightMouseClicked"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4dfffc33-1b5f-43e4-a925-6eefadb999a0"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""LeftMouseClicked"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -269,7 +249,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_CameraMotionMap_MouseClicked = m_CameraMotionMap.FindAction("MouseClicked", throwIfNotFound: true);
         m_CameraMotionMap_ModKey = m_CameraMotionMap.FindAction("ModKey", throwIfNotFound: true);
         m_CameraMotionMap_RightMouseClicked = m_CameraMotionMap.FindAction("RightMouseClicked", throwIfNotFound: true);
-        m_CameraMotionMap_LeftMouseClicked = m_CameraMotionMap.FindAction("LeftMouseClicked", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -355,7 +334,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_CameraMotionMap_MouseClicked;
     private readonly InputAction m_CameraMotionMap_ModKey;
     private readonly InputAction m_CameraMotionMap_RightMouseClicked;
-    private readonly InputAction m_CameraMotionMap_LeftMouseClicked;
     /// <summary>
     /// Provides access to input actions defined in input action map "CameraMotionMap".
     /// </summary>
@@ -387,10 +365,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "CameraMotionMap/RightMouseClicked".
         /// </summary>
         public InputAction @RightMouseClicked => m_Wrapper.m_CameraMotionMap_RightMouseClicked;
-        /// <summary>
-        /// Provides access to the underlying input action "CameraMotionMap/LeftMouseClicked".
-        /// </summary>
-        public InputAction @LeftMouseClicked => m_Wrapper.m_CameraMotionMap_LeftMouseClicked;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -432,9 +406,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @RightMouseClicked.started += instance.OnRightMouseClicked;
             @RightMouseClicked.performed += instance.OnRightMouseClicked;
             @RightMouseClicked.canceled += instance.OnRightMouseClicked;
-            @LeftMouseClicked.started += instance.OnLeftMouseClicked;
-            @LeftMouseClicked.performed += instance.OnLeftMouseClicked;
-            @LeftMouseClicked.canceled += instance.OnLeftMouseClicked;
         }
 
         /// <summary>
@@ -461,9 +432,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @RightMouseClicked.started -= instance.OnRightMouseClicked;
             @RightMouseClicked.performed -= instance.OnRightMouseClicked;
             @RightMouseClicked.canceled -= instance.OnRightMouseClicked;
-            @LeftMouseClicked.started -= instance.OnLeftMouseClicked;
-            @LeftMouseClicked.performed -= instance.OnLeftMouseClicked;
-            @LeftMouseClicked.canceled -= instance.OnLeftMouseClicked;
         }
 
         /// <summary>
@@ -539,12 +507,5 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRightMouseClicked(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "LeftMouseClicked" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnLeftMouseClicked(InputAction.CallbackContext context);
     }
 }

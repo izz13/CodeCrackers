@@ -157,12 +157,11 @@ public class AntManager : MonoBehaviour
        
     }
 
-    public void moveUpdate(Vector2 pos)
+    public void moveUpdate(Vector3 pos)
     {
-        Vector3 point = getFollowPoint(pos);
         foreach (AntController ant in ants)
         {
-            ant.setFollowPoint(point);
+            ant.setFollowPoint(pos);
         }
     }
 
