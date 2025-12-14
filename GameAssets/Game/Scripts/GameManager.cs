@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
-using Mono.Cecil.Cil;
+// using Mono.Cecil.Cil;
 using System;
 using Unity.VisualScripting;
 
@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = mainCamera.ScreenPointToRay(input.MousePos);
-        Gizmos.color = Color.aliceBlue;
+        // Gizmos.color = Color.red;
         if (Physics.Raycast(ray, out hit, 10000, groundMask) && !MouseOverUI())
         {
 
