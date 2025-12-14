@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
     void gameUI_Update()
     {
         
-
+        //If the mound is selected
         if (selectedGameObjects.Contains(moundManager.gameObject) && antManager.ants.Count == 0)
         {
             //Debug.Log("Mound in list");
@@ -106,6 +106,9 @@ public class GameManager : MonoBehaviour
             gameUI.rootVisualElement.Q<Label>("Label1").text = "Hunger: " + moundManager.queenAnt.hunger.ToString();
             gameUI.rootVisualElement.Q<Label>("Label2").text = "Level: " + moundManager.queenAnt.level.ToString();
             gameUI.rootVisualElement.Q<Label>("Label3").text = "";
+
+            //Where you should spawn a button to spawn an ant in the build options area of the UI
+            //Instantiate a ant and use the addAnt from antManager to add the ant to the game
 
         }
         else if (antManager.ants.Count > 0)
