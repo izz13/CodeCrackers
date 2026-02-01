@@ -58,10 +58,20 @@ public class GameManager : MonoBehaviour
                 if (input.MouseClicked)
                 {
                     leftClick = true;
-                    Vector3 movePoint = getMovePoint();
-                    if (movePoint != Vector3.zero)
+                    // if point clicked on is same as resource
+                    // if(movepoint == position of berry)
+                    //antManager.moveUpdate(movepoint)
+                    // 
+                    GameObject resource;
+                    Vector3 movePoint = getMovePoint(out resource);
+                    if (movePoint != Vector3.zero && resource==null)
                     {
                         antManager.moveUpdate(movePoint);
+                    }
+                    else if(movePoint!=Vector3.zero && resource != null)
+                    {
+                        antManager.gatherUpdate(movePoint, resource);
+                        
                     }
                 }
                 if (input.MouseReleased)
@@ -183,14 +193,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    Vector3 getMovePoint()
+    Vector3 getMovePoint(out GameObject resource)
     {
         RaycastHit hit;
+        resource = null;
         Ray ray = mainCamera.ScreenPointToRay(input.MousePos);
         if (Physics.Raycast(ray, out hit, 10000, groundMask) && !MouseOverUI())
         {
-
+            //bool berryHit = false;
             Vector3 movePoint = new Vector3(hit.point.x, 0f, hit.point.z);
+            //return gameobject that it hits
+            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Food"))
+            {
+                resource = hit.transform.gameObject;
+                Debug.Log(resource.name);
+            }
             return movePoint;
         }
         return Vector3.zero;
