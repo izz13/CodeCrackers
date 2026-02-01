@@ -152,7 +152,6 @@ GameObject:
   - component: {fileID: 8717722952591494706}
   - component: {fileID: 5452577064453176578}
   - component: {fileID: 9217901670170742667}
-  - component: {fileID: 9217901670170742667}
   m_Layer: 0
   m_Name: BasicAnt
   m_TagString: Untagged
@@ -248,6 +247,14 @@ MonoBehaviour:
   level: 1
 =======
     m_Bits: 64
+  name: Ant
+  health: 100
+  level: 1
+  gatherCooldown: 5
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!114 &5452577064453176578
 MonoBehaviour:
   m_ObjectHideFlags: 0
