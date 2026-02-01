@@ -251,9 +251,6 @@ MonoBehaviour:
   health: 100
   level: 1
   gatherCooldown: 5
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
 --- !u!114 &5452577064453176578
 MonoBehaviour:
