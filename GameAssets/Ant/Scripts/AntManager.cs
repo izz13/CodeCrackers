@@ -164,13 +164,7 @@ public class AntManager : MonoBehaviour
             ant.setFollowPoint(pos);
         }
     }
-    public void gatherUpdate(Vector3 pos, GameObject resource)
-    {
-        foreach (AntController ant in ants)
-        {
-            ant.setGatherState(pos, resource);
-        }
-    }
+
 
     Vector3 getFollowPoint(Vector2 movePos)
     {

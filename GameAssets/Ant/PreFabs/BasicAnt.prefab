@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 2430451989521638560}
   - component: {fileID: 8717722952591494706}
   - component: {fileID: 5452577064453176578}
-  - component: {fileID: 9217901670170742667}
+  - component: {fileID: 9179791538840319347}
   m_Layer: 0
   m_Name: BasicAnt
   m_TagString: Untagged
@@ -240,18 +240,10 @@ MonoBehaviour:
   followPoint: {x: 0, y: 0, z: 0}
   antLayerMask:
     serializedVersion: 2
-<<<<<<< Updated upstream
     m_Bits: 0
   name: Ant
   health: 100
   level: 1
-=======
-    m_Bits: 64
-  name: Ant
-  health: 100
-  level: 1
-  gatherCooldown: 5
->>>>>>> Stashed changes
 --- !u!114 &5452577064453176578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a55845d7431c34341b957400f1c3a544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!195 &9217901670170742667
+--- !u!195 &9179791538840319347
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -275,7 +267,7 @@ NavMeshAgent:
   m_AgentTypeID: -334000983
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -283,7 +275,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: -0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1 &1042438269035794930
